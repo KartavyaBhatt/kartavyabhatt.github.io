@@ -1,0 +1,7 @@
+Replace `assets/profile-photo.svg` with your actual photo file.
+
+Recommended options:
+- Keep the same filename (`profile-photo.svg`) by replacing the file.
+- Or update `index.html` to point to your preferred image format or filename.
+
+If the image cannot be loaded, the page falls back to initials automatically.

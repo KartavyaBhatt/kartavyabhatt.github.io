@@ -9,6 +9,8 @@ Interactive personal portfolio website for Kartavya Bhatt.
 - `artifacts/artifacts.json` — JSON data dictionary used to render artifact cards on the homepage.
 - `artifacts/*.html` — Individual artifact pages.
 - `artifacts/template-artifact.html` — Reusable template for manually adding new artifacts.
+- `assets/profile-photo.svg` — Current profile image asset.
+- `assets/PROFILE_IMAGE_NOTE.txt` — Notes for replacing the profile photo.
 
 ## Add a new artifact manually
 1. Copy `artifacts/template-artifact.html` to a new file (for example: `artifacts/new-artifact.html`).
