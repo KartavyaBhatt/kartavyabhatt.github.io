@@ -1,0 +1,17 @@
+[
+  {
+    "title": "AWS Script Runner Modernization",
+    "description": "Frontend upgrade, API redesign, GraphQL, and infrastructure migration work.",
+    "url": "artifacts/aws-script-runner.html"
+  },
+  {
+    "title": "3D Mesh Clustering for Siemens",
+    "description": "ML clustering methodology for large-scale industrial mesh analysis.",
+    "url": "artifacts/siemens-3d-mesh.html"
+  },
+  {
+    "title": "Deepfake Detection Research",
+    "description": "Research work on robust deepfake detection and model diagnostics.",
+    "url": "artifacts/deepfake-research.html"
+  }
+]
