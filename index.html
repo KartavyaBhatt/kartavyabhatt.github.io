@@ -43,14 +43,17 @@
               <a class="btn secondary" href="#contact">Contact Me</a>
             </div>
           </div>
-          <img
-            src="assets/profile-photo.svg"
-            alt="Portrait of Kartavya Bhatt"
-            class="avatar"
-            loading="eager"
-            onerror="this.style.display='none';document.getElementById('avatarFallback').style.display='grid';"
-          />
-          <div id="avatarFallback" class="avatar avatar-placeholder" aria-label="Kartavya Bhatt" hidden>KB</div>
+          <div class="avatar-frame">
+            <div id="avatarFallback" class="avatar avatar-placeholder" aria-label="Kartavya Bhatt">KB</div>
+            <img
+              src="assets/profile-photo.svg"
+              alt="Portrait of Kartavya Bhatt"
+              class="avatar avatar-image"
+              loading="eager"
+              onload="document.getElementById('avatarFallback').style.display='none';"
+              onerror="this.style.display='none';document.getElementById('avatarFallback').style.display='grid';"
+            />
+          </div>
         </div>
       </section>
 
