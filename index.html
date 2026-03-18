@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kartavya Bhatt | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="#top" class="brand">Kartavya Bhatt</a>
+        <nav>
+          <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">☰</button>
+          <ul id="navList" class="nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#expertise">What I Do</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#artifacts">Artifacts</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+              <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Full-Stack Developer · Software Engineer</p>
+            <h1>Building scalable full-stack products and intelligent ML systems.</h1>
+            <p class="subheadline">
+              Software Engineer focused on modern web platforms, cloud-native backend systems, and applied machine learning/computer vision research.
+            </p>
+            <div class="hero-cta">
+              <a class="btn primary" href="#artifacts">View Artifacts</a>
+              <a class="btn ghost" href="#contact">Contact Me</a>
+            </div>
+          </div>
+          <img src="assets/profile-photo.svg" alt="Portrait of Kartavya Bhatt" class="avatar" loading="eager" onerror="this.style.display='none';document.getElementById('avatarFallback').style.display='grid';" /><div id="avatarFallback" class="avatar avatar-placeholder" aria-label="Kartavya Bhatt" style="display:none;">KB</div>
+        </div>
+      </section>
+
+      <section id="about" class="section reveal">
+        <div class="container">
+          <h2>About</h2>
+          <p>
+            I’m Kartavya Bhatt, a full-stack software engineer with experience across frontend modernization, backend API design, cloud infrastructure, and machine learning research. I build systems that balance technical depth with product impact.
+          </p>
+          <p>
+            At AWS, I’ve delivered measurable improvements in performance, reliability, and scalability by modernizing frontend architecture, redesigning APIs, optimizing PostgreSQL performance, and automating infrastructure with AWS CDK.
+          </p>
+          <p>
+            I also bring a strong research background in deep learning and computer vision, including published work in deepfake detection and applied ML for industrial 3D mesh analysis. My approach is simple: <strong>learn it, then code it.</strong>
+          </p>
+        </div>
+      </section>
+
+      <section id="expertise" class="section reveal alt">
+        <div class="container">
+          <h2>What I Do</h2>
+          <div class="cards">
+            <article class="card">
+              <h3>Full-Stack Engineering</h3>
+              <p>Build and modernize end-to-end products using React, APIs, and database-backed architectures.</p>
+            </article>
+            <article class="card">
+              <h3>Backend & APIs</h3>
+              <p>Design performant REST and GraphQL services with optimized data access patterns.</p>
+            </article>
+            <article class="card">
+              <h3>Cloud Infrastructure</h3>
+              <p>Develop scalable, reliable systems on AWS with infrastructure automation using AWS CDK.</p>
+            </article>
+            <article class="card">
+              <h3>ML & Computer Vision</h3>
+              <p>Apply deep learning and computer vision to real-world, research-grade problems.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section reveal">
+        <div class="container">
+          <h2>Skills & Tech Stack</h2>
+          <div class="skill-grid">
+            <div>
+              <h3>Languages</h3>
+              <p>C, Embedded C, C++, Java, Python, JavaScript, Node.js, SQL, Shell, Golang, Solidity, MATLAB</p>
+            </div>
+            <div>
+              <h3>Web & APIs</h3>
+              <p>React, HTML, Express.js, REST APIs, SOAP, GraphQL</p>
+            </div>
+            <div>
+              <h3>Databases</h3>
+              <p>PostgreSQL, MySQL, MongoDB, CockroachDB</p>
+            </div>
+            <div>
+              <h3>Cloud & Infrastructure</h3>
+              <p>AWS, AWS CDK, Docker, Kubernetes, end-to-end deployment in AWS</p>
+            </div>
+            <div>
+              <h3>ML / CV Tools</h3>
+              <p>PyTorch, TensorFlow, Keras, OpenCV, NumPy, scikit-learn</p>
+            </div>
+            <div>
+              <h3>Core Areas</h3>
+              <p>Full-stack development, backend systems, machine learning, deep learning, computer vision, Generative AI, LLMs, multimodal prompting</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="artifacts" class="section reveal alt">
+        <div class="container">
+          <h2>Artifacts</h2>
+          <p class="section-intro">Each artifact links to a dedicated page with objective, process, tools, and value proposition.</p>
+          <div id="artifactsGrid" class="cards"></div>
+          <template id="artifactCardTemplate">
+            <a class="card card-link" href="#">
+              <h3></h3>
+              <p></p>
+              <span>Open artifact →</span>
+            </a>
+          </template>
+        </div>
+      </section>
+
+      <section id="contact" class="section reveal">
+        <div class="container">
+          <h2>Contact</h2>
+          <p>
+            Based in the Rochester, NY metropolitan area (with experience in Seattle and Rochester). If you’re building products at the intersection of scalable software and applied ML, let’s connect.
+          </p>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> <a href="mailto:kartavya075@gmail.com">kartavya075@gmail.com</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kartavyabhatt" target="_blank" rel="noreferrer">linkedin.com/in/kartavyabhatt</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/kartavyabhatt" target="_blank" rel="noreferrer">github.com/kartavyabhatt</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© <span id="year"></span> Kartavya Bhatt</div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
