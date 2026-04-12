@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Logic of Neural Networks - Kartavya Bhatt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero-banner {
+            width: 100%;
+            height: 400px;
+            background: url('assets/images/deep_learning_header.png') center/cover no-repeat;
+            border-radius: var(--radius-md);
+            margin-bottom: 3rem;
+            position: relative;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.9));
+            border-radius: var(--radius-md);
+        }
+
+        .hero-banner-content {
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            z-index: 2;
+            color: #fff;
+            max-width: 800px;
+        }
+
+        .hero-banner-content h1 {
+            color: #fff;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 0.5rem;
+            line-height: 1.15;
+            font-weight: 500;
+        }
+
+        .hero-banner-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Lists */
+        .article-body ul {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            list-style-position: inside;
+        }
+
+        .article-body ul li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+            padding-left: 0.5rem;
+        }
+
+        .article-body ul li strong {
+            color: var(--color-text);
+        }
+
+        /* Specific Table Styling */
+        .comparison-container {
+            display: block;
+            width: 100%;
+            margin: 3rem 0;
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-glow);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 1.05rem;
+            vertical-align: top;
+            min-width: 150px;
+        }
+
+        .comparison-table th {
+            background: rgba(15, 23, 42, 0.02);
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 500;
+            color: var(--color-text);
+            background: rgba(15, 23, 42, 0.01);
+            border-right: 1px solid var(--color-border);
+            width: 33%;
+            min-width: 180px;
+            color: #2563EB;
+        }
+
+        .comparison-table td:nth-child(2) {
+            font-weight: 500;
+            width: 33%;
+            min-width: 120px;
+        }
+
+        .comparison-table br {
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-table tr:last-child th,
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .diagram-container {
+            margin: 4rem 0;
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-sm);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aurora-bg"></div>
+
+    <header class="site-header fade-up">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="index.html" class="brand">Kartavya Bhatt</a>
+                <div class="nav-links">
+                    <a href="index.html#about" class="nav-link">About</a>
+                    <a href="index.html#artifacts" class="nav-link">Artifacts</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container fade-up delay-1">
+        <a href="index.html#artifacts" class="back-btn">&larr; Back to Portfolio</a>
+
+        <div class="detail-content" style="padding-top: 2rem;">
+
+            <div class="hero-banner">
+                <div class="hero-banner-content">
+                    <span class="meta-tag"
+                        style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: none;">Inside the Black Box</span>
+                    <h1>Decoding Deep Learning: The Logic of Neural Networks</h1>
+                    <p>Breaking down the internal structure and capability tradeoffs</p>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <h2>Introduction</h2>
+                <p>Deep learning sits at the center of many modern AI systems because it helps machines learn patterns from data at a scale and complexity that simpler methods often cannot handle. It powers tools that can interpret images, detect speech, recognize sequences, and generate predictions from raw information.</p>
+                <p>What makes the topic especially interesting is that deep learning is not just about building bigger models. It is about knowing when complexity adds value and when a simpler method is the smarter choice.</p>
+
+                <h2>Description</h2>
+                <p>This piece walks through deep learning in a way that feels closer to exploration than lecture notes. It moves from real-world use cases to the internal structure of neural networks, then ends with a balanced look at where deep learning shines and where it struggles.</p>
+                <p>Instead of treating every concept as abstract theory, the discussion uses examples, comparison tables, and simple visual flows to show how neural networks process information and why they matter.</p>
+
+                <h2>Objective</h2>
+                <ul>
+                    <li>Explain what deep learning is in practical terms.</li>
+                    <li>Show when neural networks are useful and when they are excessive.</li>
+                    <li>Break down the structure of a neural network into intuitive parts.</li>
+                    <li>Highlight the tradeoffs between capability, complexity, and interpretability.</li>
+                </ul>
+
+                <h2>Quick Reality Check</h2>
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Problem</th>
+                                <th>Better Choice</th>
+                                <th>Why</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A simple temperature-based coat decision</td>
+                                <td>Rule or basic model</td>
+                                <td>The relationship is direct and easy to explain</td>
+                            </tr>
+                            <tr>
+                                <td>Reading patterns in thousands of medical images</td>
+                                <td>Deep learning</td>
+                                <td>The data is complex and pattern detection is hard to engineer manually</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>How a Neural Network Thinks</h2>
+                <div class="diagram-container">
+                    <img src="assets/images/neural_network_layers.png" alt="Neural Network Layers Visualization" loading="lazy">
+                </div>
+                
+                <div class="decision-flow-wrapper" style="padding: 2rem 2rem;">
+                    <div class="flow-pill">Real-World Data</div>
+                    <div class="flow-vertical-stem"></div>
+                    <div class="flow-pill" style="background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);">Input Layer</div>
+                    <div class="flow-vertical-stem"></div>
+                    <div class="flow-pill" style="background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);">Weighted Connections</div>
+                    <div class="flow-vertical-stem"></div>
+                    <div class="flow-pill" style="background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);">Hidden Layers</div>
+                    <div class="flow-vertical-stem"></div>
+                    <div class="flow-pill" style="background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);">Activation Functions</div>
+                    <div class="flow-vertical-stem"></div>
+                    <div class="flow-pill" style="background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);">Learned Representation</div>
+                    <div class="flow-vertical-stem"></div>
+                    <div class="flow-pill" style="background: linear-gradient(135deg, #7C3AED 0%, #2563EB 100%); color: white;">Prediction / Output</div>
+                </div>
+
+                <h2>Neural Network Snapshot</h2>
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Building Block</th>
+                                <th>What it Does</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Neuron</td>
+                                <td>Processes a piece of incoming information</td>
+                            </tr>
+                            <tr>
+                                <td>Layer</td>
+                                <td>Organizes groups of neurons into stages</td>
+                            </tr>
+                            <tr>
+                                <td>Connection</td>
+                                <td>Passes information forward through the network</td>
+                            </tr>
+                            <tr>
+                                <td>Activation Function</td>
+                                <td>Helps the model capture non-linear patterns</td>
+                            </tr>
+                            <tr>
+                                <td>Output Layer</td>
+                                <td>Produces the final prediction</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Architecture Guide</h2>
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Architecture</th>
+                                <th>Best For</th>
+                                <th>Key Idea</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Feedforward Network</td>
+                                <td>Basic prediction tasks</td>
+                                <td>Information moves in one direction</td>
+                            </tr>
+                            <tr>
+                                <td>CNN</td>
+                                <td>Images and visual recognition</td>
+                                <td>Learns spatial patterns</td>
+                            </tr>
+                            <tr>
+                                <td>RNN</td>
+                                <td>Sequential data</td>
+                                <td>Remembers earlier steps in a sequence</td>
+                            </tr>
+                            <tr>
+                                <td>LSTM</td>
+                                <td>Longer sequences and context</td>
+                                <td>Retains important information over time</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Process</h2>
+                <ul>
+                    <li><strong>1. Start with the core idea:</strong> Deep learning is a branch of machine learning built to recognize patterns in large and complex datasets.</li>
+                    <li><strong>2. Ask a practical question:</strong> Is the problem simple enough for a rule, or complex enough to justify a neural network?</li>
+                    <li><strong>3. Map the learning logic:</strong> Neural networks take in data, transform it across hidden layers, and generate an output based on learned patterns.</li>
+                    <li><strong>4. Compare architectures:</strong> Different network types are better for different tasks, such as images, sequences, or general prediction.</li>
+                    <li><strong>5. Evaluate the tradeoffs:</strong> Every gain in expressive power comes with costs in data, compute, and interpretability.</li>
+                </ul>
+
+                <h2>Tools and Tech Used</h2>
+                <p><strong>Research:</strong> Deep learning concepts, neural-network fundamentals, and model interpretability literature.</p>
+                <p><strong>Framework:</strong> Artificial intelligence, machine learning, brain-inspired learning logic, and layered network design.</p>
+                <p><strong>Model Types:</strong> Feedforward neural networks, convolutional neural networks, recurrent neural networks, and LSTM networks.</p>
+
+                <h2>Value Proposition of the Artifact</h2>
+                <ul>
+                    <li>Makes deep learning easier to understand without oversimplifying it.</li>
+                    <li>Connects technical concepts to practical decision-making.</li>
+                    <li>Helps readers judge when neural networks are the right tool.</li>
+                    <li>Balances excitement about AI with a realistic view of its constraints.</li>
+                </ul>
+
+                <h2>Unique Value</h2>
+                <p>What makes this piece stand out is its focus on judgment. It does not assume that the most advanced model is always the best model. Instead, it shows that strong AI thinking begins with matching the method to the problem.</p>
+                <p>That perspective makes the topic feel more practical, more modern, and closer to how real analytical decisions are made.</p>
+
+                <h2>Why This Matters Now</h2>
+                <ul>
+                    <li>Deep learning drives image recognition, speech systems, and language technologies.</li>
+                    <li>Neural networks are central to many current AI products and research directions.</li>
+                    <li>Understanding their strengths and limits is essential for responsible adoption.</li>
+                    <li>Interpretability and resource demands remain major real-world concerns.</li>
+                </ul>
+
+                <h2>References</h2>
+                <ul style="list-style-type: disc; padding-left: 2rem; margin-top: 1rem;">
+                    <li><a href="https://www.nytimes.com/2024/05/21/technology/ai-language-models-anthropic.html" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Metz, C. (2024, May 21). A.I.’s black boxes just got a little less mysterious. The New York Times.</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer container">
+        <p>&copy; 2026 Kartavya Bhatt.</p>
+    </footer>
+</body>
+</html>
