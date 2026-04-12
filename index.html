@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartavya Bhatt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+    <div class="aurora-bg"></div>
+    
+    <header class="site-header fade-up">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="index.html" class="brand">Kartavya Bhatt</a>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#artifacts" class="nav-link">Artifacts</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Home Banner Section -->
+        <section id="home" class="section home-banner fade-up delay-1">
+            <div class="banner-card">
+                <div class="banner-content">
+                    <div class="banner-text">
+                        <p class="greeting">Hi, I'm Kartavya Bhatt</p>
+                        <h1 class="gradient-text">Backend & AI Engineer</h1>
+                        <p class="subtitle">Building scalable backend systems and applying machine learning to complex problems.</p>
+                    </div>
+                    <div class="banner-image">
+                        <div class="profile-wrapper">
+                            <img src="assets/images/profile.png" alt="Kartavya Bhatt" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section fade-up delay-2">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p class="lead">Kartavya Bhatt builds scalable software infrastructure and applies machine learning to solve complex problems. Currently focused on cloud architectures and applied computer vision.</p>
+                <p>He delivered improvements in enterprise performance at AWS by modernizing architectures and automating massively scalable infrastructure. His background includes published research in applied deep learning—specifically detecting deepfakes and optimizing 3D mesh workflows.</p>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section class="section fade-up delay-3">
+            <h2>Core Focus</h2>
+            <ul class="expertise-list">
+                <li class="expertise-item hover-lift">
+                    <strong>Backend & APIs</strong>
+                    <span>Performant REST & GraphQL architectures leveraging Go, Node.js, Python, and optimized databases.</span>
+                </li>
+                <li class="expertise-item hover-lift">
+                    <strong>Cloud Infrastructure</strong>
+                    <span>Enterprise-grade infrastructure as code utilizing AWS CDK, Docker, and Kubernetes.</span>
+                </li>
+                <li class="expertise-item hover-lift">
+                    <strong>Artificial Intelligence</strong>
+                    <span>Building modern AI systems through applied research, advanced frameworks, and generative modeling.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Artifacts Section -->
+        <section id="artifacts" class="section fade-up delay-4">
+            <h2>Artifacts</h2>
+            <div class="artifact-grid" style="grid-template-columns: 1fr; max-width: 1050px; margin: 0 auto; gap: 2rem;">
+                
+                <a href="artifact-ai-timeline.html" class="artifact-card hover-glow" style="display: flex; flex-direction: row; gap: 0; padding: 0; overflow: hidden; align-items: stretch; border-radius: var(--radius-md);">
+                    <div style="flex: 6; padding: 2.5rem;">
+                        <span class="meta-tag" style="background: linear-gradient(135deg, #10B981 0%, #2563EB 100%); margin-bottom: 1rem;">Historical Overview</span>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem; line-height: 1.2;">Evolution of Artificial Intelligence</h3>
+                        <p style="font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.5;">A historical journey traversing the six major algorithmic eras, from foundational punch-cards and early Neural Networks to the modern Generative AI paradigm.</p>
+                        <span class="card-link" style="font-size: 1rem;">Explore the Timeline &rarr;</span>
+                    </div>
+                    <div style="flex: 4; min-height: 250px; background: url('assets/images/ai_timeline_header.png') center/cover no-repeat;"></div>
+                </a>
+
+                <a href="artifact-ml-dl.html" class="artifact-card hover-glow delay-1" style="display: flex; flex-direction: row; gap: 0; padding: 0; overflow: hidden; align-items: stretch; border-radius: var(--radius-md);">
+                    <div style="flex: 4; min-height: 250px; background: url('assets/images/ml_vs_dl_header.png') center/cover no-repeat;"></div>
+                    <div style="flex: 6; padding: 2.5rem;">
+                        <span class="meta-tag" style="margin-bottom: 1rem;">Analysis & Strategy</span>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem; line-height: 1.2;">Machine Learning vs Deep Learning</h3>
+                        <p style="font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.5;">A comparative analysis evaluating traditional machine learning versus deep neural networks, focusing on data requirements, compute costs, and interactive decision frameworks.</p>
+                        <span class="card-link" style="font-size: 1rem;">Read Full Analysis &rarr;</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section fade-up delay-5">
+            <h2>Let's Connect</h2>
+            <div class="contact-grid">
+                <a href="mailto:kartavya075@gmail.com" class="contact-card hover-lift">
+                    <strong>Email</strong>
+                    <span>kartavya075@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/kartavyabhatt/" target="_blank" class="contact-card hover-lift">
+                    <strong>LinkedIn</strong>
+                    <span>linkedin.com/in/kartavyabhatt</span>
+                </a>
+                <div class="contact-card hover-lift">
+                    <strong>Location</strong>
+                    <span>New York City, New York</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer container fade-up delay-4">
+        <p>&copy; 2026 Kartavya Bhatt.</p>
+    </footer>
+</body>
+</html>

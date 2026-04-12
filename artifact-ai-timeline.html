@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolution of AI - Kartavya Bhatt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero-banner {
+            width: 100%;
+            height: 400px;
+            background: url('assets/images/ai_timeline_header.png') center/cover no-repeat;
+            border-radius: var(--radius-md);
+            margin-bottom: 3rem;
+            position: relative;
+            box-shadow: var(--shadow-glow);
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.9));
+            border-radius: var(--radius-md);
+        }
+        .hero-banner-content {
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            z-index: 2;
+            color: #fff;
+            max-width: 800px;
+        }
+        .hero-banner-content h1 {
+            color: #fff;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+        .hero-banner-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Lists */
+        .article-body ul {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            list-style-position: inside;
+        }
+        .article-body ul li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+            padding-left: 0.5rem;
+        }
+        .article-body ul li strong {
+            color: var(--color-text);
+        }
+
+        /* Specific Table Styling */
+        .comparison-container {
+            display: block;
+            width: 100%;
+            margin: 3rem 0;
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-glow);
+            -webkit-overflow-scrolling: touch;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 1.05rem;
+            vertical-align: top;
+            min-width: 150px;
+        }
+        .comparison-table th {
+            background: rgba(15, 23, 42, 0.03);
+            font-weight: 700;
+            color: var(--color-text);
+        }
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--color-text);
+            background: rgba(15, 23, 42, 0.01);
+            border-right: 1px solid var(--color-border);
+            width: 25%;
+            min-width: 180px;
+            color: #2563EB;
+        }
+        .comparison-table td:nth-child(2) {
+            font-weight: 600;
+            width: 15%;
+            min-width: 120px;
+            color: var(--color-text-muted);
+        }
+        .comparison-table tr:last-child th, .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Vertical Timeline CSS */
+        .vertical-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem 0;
+        }
+        .vertical-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            z-index: 2;
+        }
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+        }
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+            font-size: 1.3rem;
+        }
+        .timeline-content p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--color-text-muted);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: #fff;
+            border: 4px solid #2563EB;
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+        }
+        @media (max-width: 768px) {
+            .vertical-timeline::before {
+                left: 20px;
+            }
+            .timeline-item, .timeline-item:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 60px;
+                margin-bottom: 2rem;
+            }
+            .timeline-content {
+                width: 100%;
+                text-align: left !important;
+                padding: 1.5rem;
+            }
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+        
+        .diagram-container {
+            margin: 4rem 0;
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-glow);
+        }
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-sm);
+        }
+    </style>
+</head>
+<body>
+    <div class="aurora-bg"></div>
+    
+    <header class="site-header fade-up">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="index.html" class="brand">Kartavya Bhatt</a>
+                <div class="nav-links">
+                    <a href="index.html#about" class="nav-link">About</a>
+                    <a href="index.html#artifacts" class="nav-link">Artifacts</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container fade-up delay-1">
+        <a href="index.html#artifacts" class="back-btn">&larr; Back to Portfolio</a>
+        
+        <div class="detail-content" style="padding-top: 2rem;">
+            
+            <div class="hero-banner">
+                <div class="hero-banner-content">
+                    <span class="meta-tag" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: none;">Historical Overview</span>
+                    <h1>The Evolution of Artificial Intelligence</h1>
+                    <p>A Historical Journey from Foundations to Generative AI</p>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <h2>Introduction</h2>
+                <p>Artificial intelligence has evolved through a series of breakthroughs, setbacks, and renewed advances rather than through steady, uninterrupted progress. This artifact presents this development as six major eras, beginning with foundational ideas in the mid-twentieth century and extending to the rise of generative AI in the 2020s.</p>
+                <p>That structure is important because it shows that modern AI did not emerge suddenly. It is the result of decades of experimentation, changing research methods, improved computing power, and repeated lessons learned from earlier limitations. The central idea of this artifact is that AI history is best understood as a cycle of innovation, disappointment, recovery, and transformation.</p>
+
+                <h2>Description</h2>
+                <p>This timeline stretches from 1950 to 2024 across six distinct eras. Each era reflects changes in research priorities, computing power, funding, and public expectations. It emphasizes that AI progress has not been linear. Instead, major breakthroughs were often followed by periods of slowdown known as AI winters.</p>
+                <p>The six-era model helps explain how today’s generative AI systems emerged from earlier work in symbolic reasoning, neural networks, expert systems, machine learning, and deep learning.</p>
+
+                <h2>Objective</h2>
+                <p>The objective of this artifact is to explain the six major eras of AI development and show how each stage contributed to the rise of modern artificial intelligence. It is designed to help readers understand the historical path of AI, the reasons for its periods of growth and decline, and the significance of the current generative AI era.</p>
+
+                <h2>Original Diagram</h2>
+                <div class="diagram-container">
+                    <img src="assets/images/ai_timeline_diagram.png" alt="Excalidraw Diagram of AI Timeline" loading="lazy">
+                </div>
+
+                <h2>Process & Tools</h2>
+                <p>The timeline was developed through a structured review of the cited resources:</p>
+                <ul>
+                    <li>Identify the main historical section in the presentation.</li>
+                    <li>Review the six eras and the major milestones attached to each one.</li>
+                    <li>Extract the recurring themes across the timeline, including shifts in methods, computing power, and funding.</li>
+                    <li>Organize the material into a clear narrative that explains not only what happened, but why each stage mattered.</li>
+                    <li>Summarize the historical progression in a concise table and flow structure to make the artifact easier to read.</li>
+                </ul>
+
+                <h2>Summary of the Six Major Eras</h2>
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Era</th>
+                                <th>Time Period</th>
+                                <th>Main Development</th>
+                                <th>Historical Importance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Foundations</td>
+                                <td>1950–1966</td>
+                                <td>Turing Test, Dartmouth Conference, perceptron, ELIZA</td>
+                                <td>Established AI as a research field and introduced the earliest competing approaches</td>
+                            </tr>
+                            <tr>
+                                <td>First AI Winter</td>
+                                <td>1969–1973</td>
+                                <td>Criticism of neural network limits and lack of progress</td>
+                                <td>Reduced optimism and funding, exposing the gap between ambition and technical reality</td>
+                            </tr>
+                            <tr>
+                                <td>Expert Systems &amp; Second AI Winter</td>
+                                <td>1980–1987</td>
+                                <td>Growth of rule-based expert systems and later market collapse</td>
+                                <td>Showed commercial promise, but also the difficulty of scaling brittle systems</td>
+                            </tr>
+                            <tr>
+                                <td>Machine Learning Renaissance</td>
+                                <td>1997–2006</td>
+                                <td>Deep Blue and revival of deep learning</td>
+                                <td>Shifted attention toward data-driven methods and renewed interest in neural networks</td>
+                            </tr>
+                            <tr>
+                                <td>Deep Learning Revolution</td>
+                                <td>2011–2017</td>
+                                <td>Watson, AlexNet, AlphaGo, transformers</td>
+                                <td>Demonstrated the power of large datasets, better hardware, and modern neural architectures</td>
+                            </tr>
+                            <tr>
+                                <td>Generative AI Era</td>
+                                <td>2020–2024</td>
+                                <td>GPT-3, ChatGPT, multimodal AI</td>
+                                <td>Brought AI into mainstream public use and expanded its role in communication and content creation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Conceptual Flow of AI Development</h2>
+                <div class="vertical-timeline">
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Foundational Ideas</h3>
+                            <p>Turing test and early competing systems establishing the initial trajectory.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>High Expectations & Limits</h3>
+                            <p>Initial euphoria met severe technical limits, leading to the First AI Winter.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Rule-Based Business Success</h3>
+                            <p>The bloom of logical Expert Systems trying to perfectly encode human rules.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Collapse & Reassessment</h3>
+                            <p>Brittle rule-sets failed to scale, prompting the Second AI Winter crash.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Machine Learning Revival</h3>
+                            <p>The dawn of big data pipelines, allowing statistical learning to outpace rules.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Deep Learning Breakthroughs</h3>
+                            <p>Neural Networks supercharged by GPU compute—AlexNet, AlphaGo, and early Transformers.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Generative & Multimodal AI</h3>
+                            <p>The explosion of foundational models mastering text, vision, and natural interaction.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2>Value Proposition & Relevance</h2>
+                <p>This artifact provides value by turning a broad timeline into a clear explanation of how artificial intelligence developed over time. Instead of viewing AI as a single invention or a recent trend, the artifact shows it as a layered progression shaped by technical discoveries, market realities, and evolving expectations. This gives readers a stronger understanding of why today’s AI tools are powerful, why earlier systems fell short, and why responsible progress requires learning from the past.</p>
+                <p>The unique value lies in placing present-day AI within a much longer story. By organizing the material around six eras, it becomes easier to see how the field matured, how setbacks redirected research, and how breakthroughs in one era often depended on lessons from a previous one.</p>
+
+                <h2>Looking Forward</h2>
+                <p>The future of AI will depend not only on technical performance, but also on ethical considerations, integration challenges, and sustainable development. As AI systems become more powerful, concerns about bias, fairness, accountability, reliability, safety, and environmental impact become more important. These concerns make historical understanding even more valuable, because the past shows that long-term success in AI depends on balancing innovation with practical responsibility.</p>
+
+                <h2>References</h2>
+                <ul style="list-style-type: disc; padding-left: 2rem; margin-top: 1rem;">
+                    <li><a href="https://www.computer.org/publications/tech-news/research/evolution-of-ai" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Bhat, A. K. (2025). The evolution of AI. IEEE Computer Society.</a></li>
+                    <li><a href="https://www.theguardian.com/technology/2023/feb/02/chatgpt-100-million-users-open-ai-fastest-growing-app" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Milmo, D. (2023). ChatGPT reaches 100 million users. The Guardian.</a></li>
+                    <li><a href="https://ourworldindata.org/data-insights/since-2010-the-training-computation-of-notable-ai-systems-has-doubled-every-six-months" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Our World in Data. (2025). Training computation has doubled every six months.</a></li>
+                    <li><a href="https://ourworldindata.org/brief-history-of-ai" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Roser, M. (2022). The brief history of artificial intelligence. Our World in Data.</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer container">
+        <p>&copy; 2026 Kartavya Bhatt.</p>
+    </footer>
+</body>
+</html>
