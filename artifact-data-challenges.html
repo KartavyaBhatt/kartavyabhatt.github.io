@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designing Reliable AI Systems - Kartavya Bhatt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero-banner {
+            width: 100%;
+            height: 400px;
+            background: url('assets/images/data_challenges_header.png') center/cover no-repeat;
+            border-radius: var(--radius-md);
+            margin-bottom: 3rem;
+            position: relative;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.9));
+            border-radius: var(--radius-md);
+        }
+
+        .hero-banner-content {
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            z-index: 2;
+            color: #fff;
+            max-width: 800px;
+        }
+
+        .hero-banner-content h1 {
+            color: #fff;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 0.5rem;
+            line-height: 1.15;
+            font-weight: 500;
+        }
+
+        .hero-banner-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .article-body ul {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            list-style-position: inside;
+        }
+
+        .article-body ul li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+            padding-left: 0.5rem;
+        }
+
+        .comparison-container {
+            display: block;
+            width: 100%;
+            margin: 3rem 0;
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-glow);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 1.05rem;
+            vertical-align: top;
+            min-width: 150px;
+        }
+
+        .comparison-table th {
+            background: rgba(15, 23, 42, 0.02);
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 500;
+            color: #F59E0B;
+            background: rgba(15, 23, 42, 0.01);
+            border-right: 1px solid var(--color-border);
+            width: 25%;
+            min-width: 180px;
+        }
+
+        .comparison-table tr:last-child th,
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .diagram-container {
+            margin: 3rem 0;
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-sm);
+        }
+
+        h3.scenario-heading {
+            font-size: 1.6rem;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aurora-bg"></div>
+
+    <header class="site-header fade-up">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="index.html" class="brand">Kartavya Bhatt</a>
+                <div class="nav-links">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                    <a href="index.html#about" class="nav-link">About</a>
+                    <a href="index.html#artifacts" class="nav-link">Artifacts</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container fade-up delay-1">
+        <a href="index.html#artifacts" class="back-btn">&larr; Back to Portfolio</a>
+
+        <div class="detail-content" style="padding-top: 2rem;">
+
+            <div class="hero-banner">
+                <div class="hero-banner-content">
+                    <span class="meta-tag"
+                        style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: none;">Data Architecture</span>
+                    <h1>Designing Reliable AI Systems Under Real-World Data Constraints</h1>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <h2>Introduction</h2>
+                <p>Machine learning systems rarely fail because the algorithm is too simple. More often, they fail because the data is incomplete, noisy, delayed, biased, imbalanced, private, high-dimensional, or too fast-moving for a static pipeline to handle. Real-world AI work depends on the ability to recognize these conditions early and respond with structured, defensible decisions.</p>
+                <p>This artifact explores a set of practical data challenges that appear across common machine learning applications, from churn prediction and fraud detection to demand forecasting, computer vision, healthcare, natural language processing, and real-time recommendation systems. Rather than treating each challenge as an isolated issue, the artifact presents them as part of a broader discipline: building AI systems that remain accurate, fair, scalable, and trustworthy under imperfect conditions.</p>
+
+                <h2>Description</h2>
+                <p>This artifact brings together nine applied scenarios and turns them into a practical framework for solving data problems before they become model problems.</p>
+                <p>Each scenario highlights a different pressure point in the machine learning lifecycle: missing values, noisy labels, class imbalance, drift, feature overload, sensor outliers, limited labeling budgets, privacy restrictions, ethical bias, and large-scale streaming demands.</p>
+                <p>The focus is not just on technical fixes. It is on showing how strong machine learning practice combines diagnosis, preprocessing, modeling, monitoring, and governance.</p>
+                <p>Across all scenarios, one idea remains constant: a model is only as dependable as the data strategy behind it.</p>
+
+                <h2>Objective</h2>
+                <p>The objective of this artifact is to show how data challenges can be approached systematically.</p>
+                <p>The emphasis is on improving model quality, reducing risk, and supporting reliable deployment.</p>
+                <p>It focuses on turning ambiguous data conditions into practical engineering decisions that are measurable, explainable, and suitable for production.</p>
+
+                <h2>Process: A Practical Workflow for Solving Data Challenges</h2>
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Stage</th>
+                                <th>Key Question</th>
+                                <th>Example Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Diagnose</td>
+                                <td>What exactly is wrong with the data?</td>
+                                <td>Profile missingness, inspect class ratios, test drift, audit labels, review subgroup outcomes</td>
+                            </tr>
+                            <tr>
+                                <td>Stabilize</td>
+                                <td>How can the data be made usable?</td>
+                                <td>Impute, cap spikes, resample, filter features, add guardrails, secure aggregation</td>
+                            </tr>
+                            <tr>
+                                <td>Model</td>
+                                <td>Which approach fits the constraint?</td>
+                                <td>Use robust loss, regularization, tree ensembles, rolling forecasts, federated training, streaming updates</td>
+                            </tr>
+                            <tr>
+                                <td>Validate</td>
+                                <td>Did the fix actually improve trustworthiness?</td>
+                                <td>Cross-validation, backtesting, PR-AUC, fairness checks, agreement scores, load tests</td>
+                            </tr>
+                            <tr>
+                                <td>Monitor</td>
+                                <td>Could the problem return after deployment?</td>
+                                <td>Track drift, latency, missingness, subgroup errors, data quality, privacy budgets</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>1. Diagnose the Data Before Modeling</h2>
+                <p>The first step in every scenario is diagnosis rather than immediate model training.</p>
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Primary Risk</th>
+                                <th>First Diagnostic Step</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Customer churn</td><td>Missing values</td><td>Measure missingness rates, patterns, and whether missingness depends on customer behavior</td></tr>
+                            <tr><td>Fraud detection</td><td>Rare positives and noisy labels</td><td>Audit class distribution and investigate label source reliability</td></tr>
+                            <tr><td>Demand forecasting</td><td>Temporal drift and delayed labels</td><td>Compare recent and historical distributions and seasonal patterns</td></tr>
+                            <tr><td>Text classifier</td><td>High dimensionality</td><td>Measure sparsity, feature redundancy, and signal concentration</td></tr>
+                            <tr><td>IoT prediction</td><td>Sensor spikes and outliers</td><td>Detect anomalous ranges, frequency of spikes, and sensor-specific instability</td></tr>
+                            <tr><td>Object detection</td><td>Limited labeling budget</td><td>Estimate annotation effort, uncertainty, and class coverage</td></tr>
+                            <tr><td>Hospital collaboration</td><td>Privacy limits</td><td>Identify what can be learned locally and aggregated securely</td></tr>
+                            <tr><td>Resume screening</td><td>Historical bias</td><td>Audit representation, target imbalance, and fairness risk by subgroup</td></tr>
+                            <tr><td>Recommender system</td><td>Real-time scale</td><td>Map event throughput, state size, latency limits, and failure points</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>This step matters because many performance problems that appear to be “model issues” are actually data-quality or pipeline-design issues.</p>
+
+                <h2>2. Match the Treatment to the Data Problem</h2>
+                <p>Each scenario calls for a different intervention.</p>
+
+                <h3 class="scenario-heading">1. Missing Data in Churn Modeling</h3>
+                <div class="diagram-container">
+                    <img src="assets/images/scenario_1_missing_data_1776039148027.png" alt="Missing Data Imputation Diagram" loading="lazy">
+                </div>
+                <p>Start by profiling the missingness and checking whether it is random or systematic. Customer groups with and without missing values should be compared before any imputation is applied.</p>
+                <p>Because long-term customers appear more likely to have missing tenure, the gap may contain signal rather than pure error. A strong response is to impute carefully, add missingness indicators, and test whether tree-based models can learn from the pattern directly.</p>
+                <p>Median or segment-based imputation may work for monthly charges. Tenure may benefit more from grouped imputation or reconstruction from account history.</p>
+
+                <h3 class="scenario-heading">2. Imbalanced Classes and Noisy Labels in Fraud Detection</h3>
+                <div class="diagram-container">
+                    <img src="assets/images/scenario_2_fraud_imbalance_1776039160020.png" alt="Identifying Rare Fraud Cases" loading="lazy">
+                </div>
+                <p>With only 1% fraud cases, the first step is class-ratio analysis and label auditing. The model should not be judged by accuracy alone.</p>
+                <p>Evaluation should focus on precision, recall, PR-AUC, cost-sensitive thresholds, and false-positive burden. To manage imbalance, class weighting or controlled resampling can be used.</p>
+                <p>To reduce label-noise damage, suspected fraud labels should be reviewed, down-weighted, or handled with robust loss strategies. Ensemble tree models are often effective because they capture nonlinear patterns in mixed tabular data.</p>
+
+                <h3 class="scenario-heading">3. Temporal Drift and Delayed Labels in Forecasting</h3>
+                <div class="diagram-container">
+                    <img src="assets/images/scenario_3_temporal_drift_1776039173153.png" alt="Temporal Drift Over Time" loading="lazy">
+                </div>
+                <p>When demand patterns shift after reopening, the model must separate real seasonality changes from temporary disruption.</p>
+                <p>The response begins with time-sliced drift analysis, rolling validation, and feature reengineering using recent calendar behavior, promotions, local trends, and SKU-store interactions.</p>
+                <p>Even when labels are delayed, recent unlabeled windows still help with drift detection and feature monitoring. Retraining should become more frequent, and validation should prioritize the newest stable periods.</p>
+
+                <h3 class="scenario-heading">4. High Dimensionality in Text and Metadata Classification</h3>
+                <div class="diagram-container">
+                    <img src="assets/images/scenario_4_dimensionality_1776039187976.png" alt="Dimensionality Reduction" loading="lazy">
+                </div>
+                <p>With 10,000 sparse features and 50,000 examples, dimensionality reduction should preserve signal while cutting noise.</p>
+                <p>A practical approach is to remove low-value features, apply regularization, rank features by importance, and compare sparse linear baselines with embedded selection methods.</p>
+                <p>The most reliable pipeline combines vectorization, feature filtering, and cross-validated regularized models. Stability should be checked by confirming that performance holds when feature subsets change.</p>
+
+                <h3 class="scenario-heading">5. Outliers and Noisy Sensors in IoT Prediction</h3>
+                <div class="diagram-container">
+                    <img src="assets/images/scenario_5_iot_outliers_1776039203867.png" alt="Robust Outlier Filtering" loading="lazy">
+                </div>
+                <p>For streaming sensor data, extreme spikes often come from transmission errors rather than real machine behavior.</p>
+                <p>The pipeline should include robust outlier rules, sliding-window smoothing, range validation, and sensor-health flags. The goal is not to remove every unusual value automatically.</p>
+                <p>The better approach is to separate likely corruption from rare but legitimate failure signals. Robust preprocessing and robust models help preserve the anomalies that actually matter.</p>
+
+                <h3 class="scenario-heading">6. Annotation Scalability in Computer Vision</h3>
+                <div class="diagram-container">
+                    <img src="assets/images/scenario_6_active_learning_1776039216458.png" alt="Active Learning and Smart Data Annotation" loading="lazy">
+                </div>
+                <p>Labeling 200,000 images manually is expensive, so the process should combine human effort with model-assisted labeling.</p>
+                <p>Active learning can prioritize uncertain or representative images. Weak supervision can provide initial signal, and synthetic data can expand rare-case coverage.</p>
+                <p>Quality control should include gold-label checks, agreement audits, and relabeling for disputed cases. This makes the labeling pipeline scalable without treating every image as equally valuable.</p>
+
+                <h3 class="scenario-heading">7. Privacy-Preserving Learning Across Hospitals</h3>
+                <div class="diagram-container">
+                    <img src="assets/images/scenario_7_federated_learning_1776039229458.png" alt="Privacy-preserving AI / Federated Learning" loading="lazy">
+                </div>
+                <p>When hospitals cannot share raw records, training must move to the data instead of moving the data to the model.</p>
+                <p>A federated design allows local training at each hospital and secure aggregation of updates. Differential privacy lowers re-identification risk, while secure aggregation limits visibility into local contributions.</p>
+                <p>The trade-off is that privacy protection can reduce accuracy and increase system complexity. Validation therefore has to compare utility, subgroup reliability, and privacy cost together.</p>
+
+                <h3 class="scenario-heading">8. Bias and Ethics in Resume Screening</h3>
+                <div class="diagram-container">
+                    <img src="assets/images/scenario_8_fairness_bias_1776039240947.png" alt="Fairness and Bias Mitigation" loading="lazy">
+                </div>
+                <p>Historical hiring data can encode discrimination, so the safest design begins by questioning the target itself.</p>
+                <p>Sensitive proxies should be removed or tightly controlled. Feature behavior should be audited, fairness should be tested across subgroups, and outcomes should be compared using fairness-aware metrics rather than accuracy alone.</p>
+                <p>Model review should also include human oversight, appeal mechanisms, and documentation of intended use. Ethical evaluation belongs inside system design, not at the end of it.</p>
+
+                <h3 class="scenario-heading">9. Real-Time Recommendation at Massive Scale</h3>
+                <div class="diagram-container">
+                    <img src="assets/images/scenario_9_streaming_recommender_1776039256795.png" alt="Real-time Streaming Architecture" loading="lazy">
+                </div>
+                <p>Updating embeddings for millions of users under heavy event throughput requires a streaming-first architecture.</p>
+                <p>Events should move through a durable messaging layer into stateful stream processors that update user representations incrementally and publish refreshed embeddings to online serving systems.</p>
+                <p>The design must handle late events, backpressure, recovery, partitioning, and feature consistency. Scalability testing should simulate realistic bursts while measuring latency, throughput, and state correctness.</p>
+
+                <h2>3. Build Validation Into Every Solution</h2>
+                <p>Strong artifact design does not stop at proposing a technique. Each solution must be tested in a way that matches the risk.</p>
+                <ul>
+                    <li>Missing data solutions should be validated through sensitivity analysis and comparison across imputation strategies.</li>
+                    <li>Fraud systems should be validated with threshold analysis, cost-aware metrics, and drift checks over time.</li>
+                    <li>Forecasting systems should use rolling backtests rather than random splits.</li>
+                    <li>Feature selection should be validated through repeated cross-validation and stability checks.</li>
+                    <li>Sensor pipelines should be tested against simulated spike corruption and actual failure cases.</li>
+                    <li>Labeling systems should track inter-annotator agreement and downstream model improvement.</li>
+                    <li>Federated systems should validate both utility and privacy guarantees.</li>
+                    <li>Fairness-sensitive NLP tools should test subgroup outcomes and error disparities.</li>
+                    <li>Streaming recommenders should undergo load testing, replay testing, and failure recovery drills.</li>
+                </ul>
+
+                <h2>4. Treat Monitoring As Part of the Solution</h2>
+                <p>The common thread across all nine scenarios is that a one-time fix is never enough. Missingness rates can change. Fraud patterns evolve. Seasonality shifts. Sensor quality drifts. Labels decay. Bias can reappear. Streaming systems degrade under load. The artifact therefore frames monitoring as a core design requirement rather than a post-deployment extra.</p>
+                
+                <h2>Tools and Tech Used</h2>
+                <ul>
+                    <li><strong>Research:</strong> Applied machine learning concepts, model governance principles, and data-centric AI practices drawn from workshop scenario analysis.</li>
+                    <li><strong>Data Profiling:</strong> Missing-value analysis, distribution checks, drift metrics, label audits, agreement studies, and anomaly detection methods.</li>
+                    <li><strong>Modeling:</strong> Regularized linear models, tree-based ensembles, time-series forecasting approaches, robust classifiers, privacy-aware training methods, and embedding systems.</li>
+                    <li><strong>Pipeline Engineering:</strong> Batch pipelines, streaming processors, feature stores, secure aggregation workflows, and monitoring layers.</li>
+                    <li><strong>Evaluation:</strong> Cross-validation, rolling backtesting, precision-recall analysis, fairness metrics, reliability checks, and production monitoring indicators.</li>
+                    <li><strong>Visualization and Structuring:</strong> Tables, scenario mapping, workflow framing, and technical synthesis for clear communication.</li>
+                </ul>
+
+                <h2>Value Proposition of the Artifact</h2>
+                <p>The value of this artifact lies in its shift from isolated technical tricks to an integrated decision framework.</p>
+                <p>Instead of asking only, “Which model should be used?” it asks the more important question: “What must be true about the data and pipeline for the model to be trusted?”</p>
+                <p>That makes the artifact useful in both technical and leadership settings. It shows that solving data challenges is not just about improving metrics. It is also about reducing operational risk, supporting fairness, protecting privacy, and improving long-term maintainability.</p>
+
+                <h2>Unique Value</h2>
+                <p>What makes this artifact distinctive is its cross-scenario structure.</p>
+                <p>It does not focus on one domain alone. Instead, it connects tabular data, time series, computer vision, sensor streams, healthcare data, NLP, and large-scale recommendation systems through one shared lens: responsible problem-solving under data constraints.</p>
+                <p>That makes it more than a summary of techniques. It becomes a practical guide for recognizing patterns that repeat across machine learning projects, even when the application domain changes.</p>
+
+                <h2>Relevance</h2>
+                <p>This artifact is highly relevant to modern AI and analytics work because data challenges are now the rule rather than the exception.</p>
+                <p>Organizations increasingly work with incomplete records, delayed labels, privacy restrictions, biased histories, and systems that must operate continuously at scale.</p>
+                <p>Professionals who can identify these problems early and design thoughtful responses create models that are not only more accurate, but also more reliable and more defensible.</p>
+                <p>In that sense, the artifact reflects an industry reality: successful machine learning is less about perfect data and more about disciplined adaptation to imperfect data.</p>
+
+                <h2>References</h2>
+                <ul style="list-style-type: disc; padding-left: 2rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.75rem;"><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Géron, A. (2022). Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow (3rd ed.). O’Reilly Media.</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://www.deeplearningbook.org/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning. MIT Press.</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="http://www.feat.engineering/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Kuhn, M., & Johnson, K. (2019). Feature engineering and selection: A practical approach for predictive models. CRC Press.</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="http://www.cs.cmu.edu/~tom/mlbook.html" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Mitchell, T. M. (1997). Machine learning. McGraw-Hill.</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Sculley, D., Holt, G., Golovin, D., Davydov, E., Phillips, T., Ebner, D., Chaudhary, V., Young, M., Crespo, J.-F., & Dennison, D. (2015). Hidden technical debt in machine learning systems. In NIPS.</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://d2l.ai/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Zhang, A., Lipton, Z. C., Li, M., & Smola, A. J. (2021). Dive into deep learning. Cambridge University Press.</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer container">
+        <p>&copy; 2026 Kartavya Bhatt.</p>
+    </footer>
+</body>
+</html>
