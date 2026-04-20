@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethics & Facial Recognition - Kartavya Bhatt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+    <style>
+        .hero-banner {
+            width: 100%;
+            height: 400px;
+            background: url('assets/images/workshop_6_header.png') center/cover no-repeat;
+            border-radius: var(--radius-md);
+            margin-bottom: 3rem;
+            position: relative;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.95));
+            border-radius: var(--radius-md);
+        }
+
+        .hero-banner-content {
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            z-index: 2;
+            color: #fff;
+            max-width: 800px;
+        }
+
+        .hero-banner-content h1 {
+            color: #fff;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 0.5rem;
+            line-height: 1.15;
+            font-weight: 500;
+        }
+
+        .hero-banner-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .article-body ul {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            list-style-position: inside;
+        }
+
+        .article-body ul li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+            padding-left: 0.5rem;
+        }
+
+        .comparison-container {
+            display: block;
+            width: 100%;
+            margin: 3rem 0;
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-glow);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 1.05rem;
+            vertical-align: top;
+            min-width: 150px;
+        }
+
+        .comparison-table th {
+            background: rgba(15, 23, 42, 0.02);
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 500;
+            color: #F59E0B;
+            background: rgba(15, 23, 42, 0.01);
+            border-right: 1px solid var(--color-border);
+            width: 25%;
+            min-width: 180px;
+        }
+
+        .comparison-table tr:last-child th,
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .diagram-container {
+            margin: 3rem 0;
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-glow);
+            overflow-x: auto;
+        }
+
+        .diagram-container pre.mermaid {
+            margin: 0;
+            text-align: left;
+        }
+
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-sm);
+        }
+
+        h3.scenario-heading {
+            font-size: 1.6rem;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aurora-bg"></div>
+
+    <header class="site-header fade-up">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="index.html" class="brand">Kartavya Bhatt</a>
+                <div class="nav-links">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                    <a href="index.html#about" class="nav-link">About</a>
+                    <a href="index.html#artifacts" class="nav-link">Artifacts</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container fade-up delay-1">
+        <a href="index.html#artifacts" class="back-btn">&larr; Back to Portfolio</a>
+
+        <div class="detail-content" style="padding-top: 2rem;">
+
+            <div class="hero-banner">
+                <div class="hero-banner-content">
+                    <span class="meta-tag"
+                        style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: none;">AI Ethics & Governance</span>
+                    <h1>Algorithmic Bias and Real-World Consequences</h1>
+                    <p style="margin-top: 0.5rem;">A case study on the Robert Williams wrongful arrest incident.</p>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <h2>Introduction</h2>
+                <p>Artificial intelligence is often presented as a tool for speed, accuracy, and better decision-making. In practice, however, AI systems can also amplify harm when they are used in high-stakes environments without the right safeguards. This becomes especially serious when the technology influences policing, legal outcomes, or civil rights. The Robert Williams case is a clear example of why ethical AI cannot be treated as an afterthought. When a flawed system is trusted too quickly, the result is not just a technical error. It is harm to a real person, a family, and public trust.</p>
+
+                <h2>Description</h2>
+                <p>This artifact examines the wrongful arrest of Robert Williams, a Black man who was incorrectly identified by facial recognition software during a Detroit police investigation. The case is significant because it goes beyond a single model mistake. It reveals how algorithmic bias, weak human oversight, and limited accountability can combine to create serious real-world consequences.</p>
+                <p>Rather than treating the incident as an isolated failure, this artifact uses it to explain broader questions in AI ethics. It highlights how technical systems interact with human judgment, institutional process, and civil rights. The result is a case study that explains not only what went wrong, but also why responsible AI leadership requires stronger safeguards before systems like these are trusted in high-impact settings.</p>
+
+                <h2>Objective</h2>
+                <p>The objective of this artifact is to show how one documented AI incident reveals larger ethical issues in the design and use of machine learning systems. It demonstrates that responsible AI is not only about improving model performance. It is also about understanding fairness, preventing overreliance on automation, and ensuring accountability when people may be harmed by the system’s output.</p>
+                <p>A second objective is to connect ethical analysis with practical leadership. By breaking the case into specific issues and mitigation strategies, the artifact shows how AI/ML leaders can think more carefully about deployment, governance, and risk in real organizational settings.</p>
+
+                <h2>Process</h2>
+                <p>The artifact was developed through a structured case-analysis process. The first step was selecting a well-documented AI-related incident with clear human consequences. The Robert Williams case was chosen because it is one of the best-known examples of facial recognition failure in a law-enforcement context.</p>
+                <p>The second step was summarizing the incident to establish the factual foundation. After that, the analysis focused on three major ethical issues: algorithmic bias and unequal accuracy, overreliance on AI by human decision-makers, and accountability, transparency, and civil-rights impact. The final step was translating those concerns into practical mitigation strategies such as fairness testing, independent verification, stronger review standards, documentation, auditability, and clearer governance over high-stakes use.</p>
+
+                <h2>Incident Flow</h2>
+                <p>The diagram below illustrates how an abstract algorithm's bias translated into a wrongful arrest due to systematic oversight failures.</p>
+                <div class="diagram-container">
+                    <pre class="mermaid">
+                    graph TD
+                        A[Surveillance Input] --> B[Algorithmic Bias & Unequal Accuracy]
+                        B --> C[Flawed Facial Recognition Match]
+                        C --> D[Overreliance on AI Output]
+                        D --> E[Human Decision to Arrest without Corroboration]
+                        E --> F[Wrongful Arrest & Harm]
+                        
+                        style F fill:#ef4444,stroke:#dc2626,color:#fff
+                    </pre>
+                </div>
+
+                <h2>Ethical Framework</h2>
+                <p>The table below summarizes the three central ethical issues in the case, why each issue matters, and what a more responsible response would look like.</p>
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Ethical Issue</th>
+                                <th>Why it Matters</th>
+                                <th>Mitigation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Algorithmic bias and unequal accuracy</td>
+                                <td>Facial recognition systems can perform unevenly across demographic groups. In a law-enforcement context, those disparities can expose some people to a greater risk of misidentification and harm.</td>
+                                <td>Require independent testing across demographic groups, recurring bias audits, and suspension of use when meaningful disparities are found.</td>
+                            </tr>
+                            <tr>
+                                <td>Overreliance on AI by human decision-makers</td>
+                                <td>The presence of human review does not automatically make AI safe. If investigators treat the model output as authoritative, oversight becomes weak rather than protective.</td>
+                                <td>Treat facial recognition only as a lead, never as proof. Require strong independent corroboration before any enforcement action.</td>
+                            </tr>
+                            <tr>
+                                <td>Accountability, transparency, and civil rights</td>
+                                <td>Harm does not stop at the model. Vendors, agencies, investigators, and policy choices all shape outcomes. Without transparency, people cannot meaningfully challenge the role AI played.</td>
+                                <td>Require documentation, audit logs, external oversight, disclosure rules, and clear remedies for people harmed by incorrect AI-assisted identification.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Governance Diagram</h2>
+                <p>A safer path from model output to real-world action in high-stakes settings emphasizes independent testing, corroboration, and proper accountability.</p>
+                <div class="diagram-container">
+                    <pre class="mermaid">
+                    graph TD
+                        A[Facial Recognition Model Output] -->|Independent demographic testing| B(Human Review: Treat strictly as investigative LEAD)
+                        B --> C{Independent Corroboration Available?}
+                        C -->|Yes| D[Accountability Log & Validation]
+                        C -->|No| E[Suspend Action]
+                        D --> F[Responsible Real-World Action]
+                        
+                        style F fill:#10b981,stroke:#059669,color:#fff
+                    </pre>
+                </div>
+
+                <h2>Tools and Tech Used</h2>
+                <ul>
+                    <li><strong>Research:</strong> Credible reporting, public-interest legal sources, and technical research on facial recognition bias and demographic effects.</li>
+                    <li><strong>Analysis:</strong> Structured ethical reasoning focused on fairness, human oversight, transparency, and accountability.</li>
+                    <li><strong>Writing:</strong> Clear explanatory writing designed to translate a complex AI incident into an accessible and professional case study.</li>
+                    <li><strong>Design:</strong> Visual diagrams, tables, and layout formatting to make the analysis easier to follow.</li>
+                </ul>
+
+                <h2>Value Proposition of the Artifact</h2>
+                <p>The value of this artifact is that it makes AI ethics concrete. Instead of discussing fairness or accountability in abstract terms, it shows how failures in AI systems can affect a person’s freedom, dignity, and treatment by institutions. That makes the importance of responsible AI easier to understand for both technical and non-technical audiences.</p>
+                <p>It also provides practical value for future AI/ML work. The artifact does not stop at identifying problems. It connects each ethical issue to a specific mitigation strategy, which makes it useful for thinking about governance, deployment decisions, and leadership responsibilities in real-world AI settings.</p>
+
+                <h2>Unique Value</h2>
+                <p>What makes this artifact distinctive is its balance between technical ethics and human impact. It explains how algorithmic systems, human reviewers, and institutional decisions interact, rather than placing all responsibility on the model itself.</p>
+                <p>It also frames ethics as part of leadership, not just compliance. The case shows that strong AI leadership requires judgment about when a system should be used, how much trust it deserves, and what safeguards must exist before people are exposed to its risks.</p>
+
+                <h2>Relevance</h2>
+                <p>This artifact is highly relevant to modern AI/ML practice because more organizations are integrating machine learning into decisions that affect people directly. As AI moves into public safety, healthcare, hiring, finance, and other sensitive areas, questions of fairness, explainability, and accountability become more urgent.</p>
+                <p>It is also relevant to my own development in AI/ML leadership. It reflects a shift from thinking mainly about technical capability to thinking more seriously about consequences, safeguards, and responsible deployment. That perspective is essential for anyone who wants to lead AI initiatives that are both effective and ethical.</p>
+
+                <h2>References</h2>
+                <ul style="list-style-type: disc; padding-left: 2rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.75rem;"><a href="https://www.aclu.org/cases/williams-v-city-of-detroit-face-recognition-false-arrest" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">American Civil Liberties Union. (n.d.). Williams v. City of Detroit.</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://incidentdatabase.ai/cite/74/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">AI Incident Database. (n.d.). Detroit police wrongfully arrested Robert Williams due to faulty facial recognition (Incident No. 74).</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Grother, P., Ngan, M., & Hanaoka, K. (2019). Face recognition vendor test (FRVT) part 3: Demographic effects (NIST Interagency/Internal Report No. 8280).</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://quadrangle.michigan.law.umich.edu/issues/winter-2024-2025/flawed-facial-recognition-technology-leads-wrongful-arrest-and-historic" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">University of Michigan Law School. (2024). Flawed facial recognition technology leads to wrongful arrest and historic settlement.</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://www.theguardian.com/technology/article/2024/jul/01/detroit-police-facial-recognition-racial-bias" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Wahba, P. (2024, July 1). Detroit police to curb use of facial recognition after wrongful arrest cases.</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer container">
+        <p>&copy; 2026 Kartavya Bhatt.</p>
+    </footer>
+</body>
+</html>
